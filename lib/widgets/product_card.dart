@@ -46,6 +46,8 @@ class ProductCard extends StatelessWidget {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            // keep size minimal so it doesn't try to expand unnecessarily
+            mainAxisSize: MainAxisSize.min,
             children: [
               Hero(
                 tag: 'product_image_${product.id}',
@@ -85,9 +87,15 @@ class ProductCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // kasih batas baris dan overflow supaya gak melebihi area
                     Text(
                       product.name,
-                      style: TextStyle(fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 13,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 6),
                     Text(
@@ -95,7 +103,10 @@ class ProductCard extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppColors.yellow,
+                        fontSize: 13,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
